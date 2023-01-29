@@ -1,7 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  //rutas protegidas
+  {path: 'pages', loadChildren: ()=>import('./pages/pages.module').then(m=>m.PagesModule)},
+  {path: 'auth', loadChildren: ()=>import('./auth/auth.module').then(a=>a.AuthModule)},
+  {path: 'dashboard', component: DashboardComponent},
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: '**', component: NotFoundComponent},
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
