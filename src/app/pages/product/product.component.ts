@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -6,22 +6,20 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent implementsoninit{
-  constructor (private HcttpClient:HttpClient) {
+export class ProductComponent implements OnInit{
+  constructor (private httpClient:HttpClient) {
   }
   ngOnInit(): void{
-    this.getProducts();
+    this.getProduct(273);
   }
   getProducts(){
-    this.HttpClient.get('https://api.escuela.co/api/v1/products').subscribe(response=>{console.log(response)})  
+    const response=this.httpClient.get('https://api.escuelajs.co/api/v1/products').subscribe(response=>{console.log(response)})
   }
-  
-  function ngOnInit() {
-    throw new Error('Function not implemented.');
+
+  getProduct(id:number){
+    const response=this.httpClient.get('https://api.escuelajs.co/api/v1/products/'+id).subscribe(response=>{console.log(response)})
   }
-  
-  function getProduct() {
-    throw new Error('Function not implemented.');
-  }
-    
 }
+
+
+

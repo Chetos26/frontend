@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PagesComponent } from './pages/pages.component';
@@ -13,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NotFoundRoutingModule } from './not-found/not-found-routing.module';
+import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,9 +30,12 @@ import { NotFoundRoutingModule } from './not-found/not-found-routing.module';
     PagesModule,
     AuthModule,
     SharedModule,
-    NotFoundRoutingModule
+    NotFoundRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    HttpClient,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
