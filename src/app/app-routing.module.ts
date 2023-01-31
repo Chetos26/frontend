@@ -9,6 +9,7 @@ const routes: Routes = [
   //rutas protegidas
   {path: 'pages', loadChildren: ()=>import('./pages/pages.module').then(m=>m.PagesModule)},
   {path: 'auth', loadChildren: ()=>import('./auth/auth.module').then(a=>a.AuthModule)},
+  {path: 'shared', loadChildren: ()=>import('./shared/shared.module').then(b=>b.SharedModule)},
   {path: 'dashboard', component: DashboardComponent},
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   {path: '**', component: NotFoundComponent},
