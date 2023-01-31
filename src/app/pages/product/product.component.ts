@@ -13,16 +13,14 @@ export class ProductComponent implementsoninit{
     this.getProducts();
   }
   getProducts(){
-    this.HttpClient.get('https://api.escuela.co/api/v1/products')
-    console.console.log(Response);
-    
+    this.HttpClient.get('https://api.escuela.co/api/v1/products').subscribe(response=>{console.log(response)})  
   }
   
   function ngOnInit() {
     throw new Error('Function not implemented.');
   }
   
-  function getProducts() {
+  function getProduct() {
     throw new Error('Function not implemented.');
   }
     
