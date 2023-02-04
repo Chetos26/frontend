@@ -16,12 +16,12 @@ export class ProductComponent implements OnInit{
     this.deleteProduct(266)
   }
   getProducts(){
-    const response=this.productService.getProducts().subscribe
+    const response=this.productService.getall().subscribe
     (response=>{console.log(response)})
   }
 
   getProduct(id:number){
-    const response=this.productService.getProduct(id).subscribe
+    const response=this.productService.getOne(id).subscribe
     (response=>{console.log(response)})
   }
   //funcion para consumir servicio

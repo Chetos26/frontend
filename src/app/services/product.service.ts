@@ -12,13 +12,13 @@ export class ProductService {
   //inyeccion de dependencias//
   constructor(private httpClient:HttpClient) {}
 
-  getProducts():Observable<productModel[]>{
+  getall():Observable<productModel[]>{
     const response =
     this.httpClient.get<productModel[]>(this.API_REST);
     return response
   }
 
-  getProduct(id:number):Observable<productModel>{
+  getOne(id:number):Observable<productModel>{
     const url =`${this.API_REST}/${id}`
     const response=this.httpClient.get<productModel>(url);
     return response
@@ -31,14 +31,14 @@ export class ProductService {
     return response;
   }
 
-  update(id:number, product:updateProductModel):Observable<updateProductModel>{
+  update(id:productModel['id'], product:updateProductModel):Observable<updateProductModel>{
     const url =`${this.API_REST}/${id}`
     const response =
     this.httpClient.put<updateProductModel>(url, product);
     return response;
   }
 
-  destroy(id:number):Observable<boolean>{
+  destroy(id:productModel['id']):Observable<boolean>{
     const url =`${this.API_REST}/${id}`
     const response = this.httpClient.delete<any>(url).pipe(map((response:{rta: boolean})=>{
       return response.rta
